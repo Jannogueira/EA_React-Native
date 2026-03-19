@@ -23,6 +23,7 @@ export const UserInfoModal = ({
   const [isEditing, setIsEditing] = useState(false);
   const [editName, setEditName] = useState('');
   const [editEmail, setEditEmail] = useState('');
+  const [editPassword, setEditPassword] = useState('');
   const [editOrg, setEditOrg] = useState('');
 
   // Reset states when modal is opened or user changes
@@ -31,6 +32,7 @@ export const UserInfoModal = ({
       setIsEditing(false);
       setEditName(user.name || '');
       setEditEmail(user.email || '');
+      setEditPassword('');
       
       const currentOrgId = typeof user.organizacion === 'object' && user.organizacion !== null
         ? user.organizacion._id
@@ -46,11 +48,17 @@ export const UserInfoModal = ({
   };
 
   const handleSave = async () => {
-    await onSave({
+    const updatedUser: any = {
       name: editName,
       email: editEmail,
       organizacion: editOrg || null
-    });
+    };
+
+    if (editPassword.trim() !== '') {
+      updatedUser.password = editPassword.trim();
+    }
+
+    await onSave(updatedUser);
     // Let the parent component close or change state, but we can turn off edit mode if it didn't throw
     setIsEditing(false);
   };
@@ -90,6 +98,15 @@ export const UserInfoModal = ({
                 keyboardType="email-address"
                 autoCapitalize="none"
                 placeholder="Correo electrónico"
+              />
+
+              <Text style={styles.label}>Nueva Contraseña</Text>
+              <TextInput
+                style={styles.input}
+                value={editPassword}
+                onChangeText={setEditPassword}
+                secureTextEntry
+                placeholder="Dejar en blanco para mantener la actual"
               />
 
               <Text style={styles.label}>Organización</Text>

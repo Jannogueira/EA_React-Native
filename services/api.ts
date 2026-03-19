@@ -4,7 +4,7 @@ const getBaseUrl = () => {
     const physicalDeviceIP = '192.168.1.22';
 
     if (Platform.OS === 'android') {
-        return 'http://10.0.2.2:1337';
+        return `http://${physicalDeviceIP}:1337`;
     } else if (Platform.OS === 'ios') {
         return `http://${physicalDeviceIP}:1337`;
     } else {
@@ -12,13 +12,10 @@ const getBaseUrl = () => {
     }
 };
 
-
 export const API_BASE_URL = getBaseUrl();
 
 export const api = {
-
     //    USUARIOS
-
     getUsuarios: async () => {
         try {
             const response = await fetch(`${API_BASE_URL}/usuarios`);
@@ -84,9 +81,7 @@ export const api = {
         }
     },
 
-
     //  ORGANIZACIONES
-
     getOrganizaciones: async () => {
         try {
             const response = await fetch(`${API_BASE_URL}/organizaciones`);

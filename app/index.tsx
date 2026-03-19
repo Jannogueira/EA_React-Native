@@ -12,14 +12,14 @@ export default function Index() {
         style={styles.button}
         onPress={() => router.push("/(tabs)/organization")}
       >
-        <Text style={styles.buttonText}>Ir a Organización</Text>
+        <Text style={styles.buttonText}>Gestionar Organizaciones</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.button}
         onPress={() => router.push("/(tabs)/users")}
       >
-        <Text style={styles.buttonText}>Ir a Usuarios</Text>
+        <Text style={styles.buttonText}>Gestionar Usuarios</Text>
       </TouchableOpacity>
     </View>
   );

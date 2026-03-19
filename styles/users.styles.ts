@@ -33,7 +33,8 @@ export const usersStyles = StyleSheet.create({
     paddingBottom: 20,
   },
   card: {
-    backgroundColor: '#ffffffaf',
+    backgroundColor: '#fff',
+    opacity: 0.75,
     padding: 15,
     borderRadius: 8,
     marginBottom: 12,
@@ -53,6 +54,7 @@ export const usersStyles = StyleSheet.create({
   },
   cardContent: {
     flex: 1,
+    backgroundColor: 'transparent',
   },
   cardTitle: {
     fontSize: 18,

@@ -114,7 +114,7 @@ export default function UsersScreen() {
 
   const handleUpdateUser = async (updatedData: any) => {
     if (!selectedUser) return;
-    
+
     setIsSubmitting(true);
     try {
       const updatedUser = await usuarioService.updateUsuario(selectedUser._id, updatedData);
@@ -133,12 +133,8 @@ export default function UsersScreen() {
   const filteredUsers = users.filter(user => {
     const searchLower = searchQuery.toLowerCase();
     const userNameMatch = user.name.toLowerCase().includes(searchLower);
-    
-    // Find the organization name for this user
-    const userOrg = organizations.find(org => org._id === user.organizacion);
-    const orgNameMatch = userOrg ? userOrg.name.toLowerCase().includes(searchLower) : false;
-    
-    return userNameMatch || orgNameMatch;
+
+    return userNameMatch;
   });
 
   return (
@@ -149,7 +145,7 @@ export default function UsersScreen() {
         <MaterialIcons name="search" size={20} color="#666" style={styles.searchIcon} />
         <TextInput
           style={styles.searchInput}
-          placeholder="Buscar por nombre o organización..."
+          placeholder="Buscar por nombre..."
           value={searchQuery}
           onChangeText={setSearchQuery}
         />
@@ -171,7 +167,7 @@ export default function UsersScreen() {
           contentContainerStyle={styles.listContainer}
           renderItem={({ item }) => (
             <View style={styles.card}>
-              <TouchableOpacity 
+              <TouchableOpacity
                 style={styles.cardContent}
                 onPress={() => handleViewUser(item)}
               >

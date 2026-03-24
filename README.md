@@ -1,5 +1,7 @@
 # EA_React-Native
 
+Hecho con backend: https://github.com/Jannogueira/EA_Sem5_APIRest_Backend
+
 A professional React Native application built with **TypeScript** and **Expo Router**, designed for cross-platform compatibility (iOS & Android). This project follows modern development practices, featuring a modular architecture, tab-based navigation, and integrated API services.
 
 ---
